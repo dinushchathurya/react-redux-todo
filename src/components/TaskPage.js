@@ -3,6 +3,11 @@ import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
+import FormLabel from '@material-ui/core/FormLabel';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import Radio from '@material-ui/core/Radio';
+import Paper from '@material-ui/core/Paper';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
@@ -81,9 +86,23 @@ const useStyles = makeStyles((theme) => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
-}));
 
-const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  paper: {
+    height: 140,
+    width: 100,
+  },
+  control: {
+    padding: theme.spacing(2),
+  },
+  root: {
+    flexGrow: 1,
+  },
+  paper: {
+    padding: theme.spacing(2),
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+  },
+}));
 
 const TaskPage = () => {
 
@@ -97,6 +116,12 @@ const TaskPage = () => {
   const onChangeDescription = (e) => {
     setDescription(e.target.value)
   }
+
+  const [spacing, setSpacing] = React.useState(2);
+
+  const handleChange = (event) => {
+    setSpacing(Number(event.target.value));
+  };
 
   const classes = useStyles();
 
@@ -153,6 +178,21 @@ const TaskPage = () => {
           </Container>
         </div>
       </main>
+
+      <Container>
+        <Grid container spacing={3}>
+          <Grid item xs>
+            <Paper className={classes.paper}>xs</Paper>
+          </Grid>
+          <Grid item xs>
+            <Paper className={classes.paper}>xs</Paper>
+          </Grid>
+          <Grid item xs>
+            <Paper className={classes.paper}>xs</Paper>
+          </Grid>
+        </Grid>
+      </Container>
+        
       <footer className={classes.footer}>
         <Copyright />
       </footer>
