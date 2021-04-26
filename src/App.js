@@ -1,13 +1,20 @@
-import logo from './logo.svg';
+import React from 'react';
+import { connect } from 'react-redux';
 import './App.css';
 import "bootstrap/dist/css/bootstrap.min.css";
+import TaskPage from './components/TaskPage';
 
-function App() {
+function App(props) {
   return (
     <div className="App">
-      <h1>Hello from App Component</h1>
+      <TaskPage tasks={props.tasks} />
     </div>
   );
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    tasks: state.tasks
+  }
+}
+export default connect(mapStateToProps)(App);
